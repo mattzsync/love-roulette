@@ -1,0 +1,438 @@
+:root {
+    --bg-body: #f5f5f5;
+    --bg-card: #ffffff;
+    --text-principal: #222;
+    --titulo: #e63946;
+    --sombra: rgba(0,0,0,.15);
+
+    --lista-item-bg: #ececec;
+    --lista-item-texto: #222;
+
+    --borda-roleta: #444;
+
+    --btn-girar: #4CAF50;
+    --btn-girar-hover: #43a047;
+
+    --btn-add: #2196f3;
+    --btn-add-hover: #1976d2;
+
+    --btn-remover: #ff3b30;
+    --btn-remover-hover: #e0322a;
+
+    --modal-overlay: rgba(0,0,0,.5);
+    --modal-bg: #ffffff;
+    --input-borda: #bbb;
+
+    --btn-cancelar: #e0e0e0;
+    --btn-cancelar-hover: #d5d5d5;
+
+    --resultado-texto: #d62828;
+}
+
+[data-tema="escuro"] {
+    --bg-body: #1a0d0d;
+    --bg-card: #2b1414;
+    --text-principal: #f1e4e4;
+    --titulo: #ff6b6b;
+    --sombra: rgba(0,0,0,.5);
+
+    --lista-item-bg: #3d1a1a;
+    --lista-item-texto: #f1e4e4;
+
+    --borda-roleta: #6b1f1f;
+
+    --btn-girar: #7a2020;
+    --btn-girar-hover: #932828;
+
+    --btn-add: #8f2626;
+    --btn-add-hover: #a83030;
+
+    --btn-remover: #c62828;
+    --btn-remover-hover: #e03535;
+
+    --modal-overlay: rgba(0,0,0,.7);
+    --modal-bg: #2b1414;
+    --input-borda: #6b1f1f;
+
+    --btn-cancelar: #4a2222;
+    --btn-cancelar-hover: #5c2a2a;
+
+    --resultado-texto: #ff6b6b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 16px;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 700px;
+
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 20px;
+
+    box-shadow: 0 10px 25px var(--sombra);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+
+    position: relative;
+
+    transition: background .3s;
+}
+
+h1 {
+    color: var(--titulo);
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+/* ===== BOTÃO DE TEMA ===== */
+.btn-tema {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+
+    background: var(--lista-item-bg);
+    font-size: 18px;
+
+    cursor: pointer;
+    touch-action: manipulation;
+
+    transition: background .3s;
+}
+
+.btn-tema:hover {
+    background: var(--btn-cancelar-hover);
+}
+
+/* ===== ROLETA ===== */
+.roleta-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1 / 1;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#roleta {
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    border-radius: 50%;
+    border: 8px solid var(--borda-roleta);
+    background: white;
+}
+
+.ponteiro {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 0;
+    height: 0;
+
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+    border-top: 40px solid #ff3b30;
+
+    z-index: 10;
+}
+
+/* ===== AÇÕES ===== */
+.acoes {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+#girar {
+    padding: 14px 40px;
+    font-size: 18px;
+    font-weight: bold;
+
+    border: none;
+    border-radius: 10px;
+
+    cursor: pointer;
+    touch-action: manipulation;
+
+    background: var(--btn-girar);
+    color: white;
+
+    transition: .2s;
+}
+
+#girar:hover {
+    transform: scale(1.05);
+    background: var(--btn-girar-hover);
+}
+
+.btn-add {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: var(--btn-add);
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    touch-action: manipulation;
+    line-height: 1;
+}
+
+.btn-add:hover {
+    background: var(--btn-add-hover);
+}
+
+/* ===== LISTA ===== */
+.lista {
+    width: 100%;
+}
+
+#listaOpcoes {
+    list-style: none;
+    margin-top: 5px;
+    width: 100%;
+}
+
+#listaOpcoes li {
+    background: var(--lista-item-bg);
+    color: var(--lista-item-texto);
+
+    padding: 12px;
+    margin-bottom: 10px;
+
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+#listaOpcoes li span {
+    flex: 1;
+    word-break: break-word;
+}
+
+.btn-remover {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: var(--btn-remover);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.btn-remover:hover {
+    background: var(--btn-remover-hover);
+}
+
+/* ===== MODAIS ===== */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--modal-overlay);
+    z-index: 100;
+
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal.ativo {
+    display: flex;
+}
+
+.modal-conteudo {
+    background: var(--modal-bg);
+    border-radius: 14px;
+    padding: 24px;
+    width: 100%;
+    max-width: 360px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    transition: background .3s;
+}
+
+.modal-conteudo h2 {
+    text-align: center;
+    color: var(--text-principal);
+}
+
+.modal-conteudo input {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--input-borda);
+    font-size: 16px;
+    background: var(--bg-body);
+    color: var(--text-principal);
+}
+
+.modal-botoes {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-botoes button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+#adicionar {
+    background: var(--btn-add);
+    color: white;
+}
+
+#adicionar:hover {
+    background: var(--btn-add-hover);
+}
+
+#cancelar {
+    background: var(--btn-cancelar);
+    color: var(--text-principal);
+}
+
+#cancelar:hover {
+    background: var(--btn-cancelar-hover);
+}
+
+#fecharResultado {
+    background: var(--btn-girar);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    touch-action: manipulation;
+    width: 100%;
+}
+
+#fecharResultado:hover {
+    background: var(--btn-girar-hover);
+}
+
+#resultado {
+    margin-top: 4px;
+
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--resultado-texto);
+
+    text-align: center;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 480px) {
+
+    .container {
+        padding: 16px;
+        border-radius: 14px;
+        gap: 14px;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    #girar {
+        padding: 12px 28px;
+        font-size: 16px;
+    }
+}
+
+#videoFundo {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: -2;
+}
+
+.overlay-fundo {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(40, 10, 10, 0.5);
+
+    z-index: -1;
+}
+
+.btn-som {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+
+    background: var(--lista-item-bg);
+    font-size: 18px;
+
+    cursor: pointer;
+    touch-action: manipulation;
+
+    transition: background .3s;
+}
+
+.btn-som:hover {
+    background: var(--btn-cancelar-hover);
+}

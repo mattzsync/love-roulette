@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Roletando</title>
+
+    <link rel="stylesheet" href="assets/themes/begin.css">
+</head>
+<body>
+
+<video id="videoFundo" autoplay muted loop playsinline>
+    <source src="assets/themes/background.mp4" type="video/mp4">
+</video>
+
+<audio id="somFundo" loop>
+    <source src="assets/music/Last_Night.mp3" type="audio/mpeg">
+</audio>
+
+<div class="overlay-fundo"></div>
+
+<main class="container">
+    <button id="toggleTema" class="btn-tema" aria-label="Alternar tema">
+        🌙
+    </button>
+
+    <button id="toggleSom" class="btn-som" aria-label="Ligar/desligar som">
+        🔇
+    </button>
+
+    <h1>❤️ ❤️ ❤️ ❤️</h1>
+
+    <section class="roleta-container">
+
+        <div class="ponteiro"></div>
+
+        <canvas id="roleta" width="500" height="500"></canvas>
+
+    </section>
+
+    <div class="acoes">
+
+        <button id="girar">
+            🎲 Girar
+        </button>
+
+        <button id="abrirModal" class="btn-add">
+            +
+        </button>
+
+    </div>
+
+    <section class="lista">
+        <ul id="listaOpcoes"></ul>
+    </section>
+
+</main>
+
+<!-- Modal para adicionar -->
+<div id="modalAdicionar" class="modal">
+
+    <div class="modal-conteudo">
+
+        <h2>Nova ideia</h2>
+
+        <input
+            type="text"
+            id="novaOpcao"
+            placeholder="Ex: Ir ao cinema"
+        >
+
+        <div class="modal-botoes">
+
+            <button id="cancelar">
+                Cancelar
+            </button>
+
+            <button id="adicionar">
+                Adicionar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Modal do resultado -->
+<div id="modalResultado" class="modal">
+
+    <div class="modal-conteudo">
+
+        <h2>❤️ Date sorteado ❤️</h2>
+
+        <p id="resultado"></p>
+
+        <button id="fecharResultado">
+            Fechar
+        </button>
+
+    </div>
+
+</div>
+
+<script src="assets/scripts/main.js"></script>
+
+</body>
+</html>
