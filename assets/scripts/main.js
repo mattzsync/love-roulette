@@ -41,9 +41,21 @@ function alternarSom() {
 btnToggleSom.addEventListener("click", alternarSom);
 
 let opcoes = [
-    "Minions piratex",
-    "alburgui",
-    "açai"
+  "Piquenique",
+  "comer em um lugar novo",
+  "Passeio de carro compartilhando musica",
+  "Sorveteria",
+  "Pintar telas",
+  "Maratona de série",
+  "Maratona de filmes",
+  "Degustação de doces",
+  "hambúrguer",
+  "sushi",
+  "Criar playlist juntos",
+  "Fotografar coisas aleatorias",
+  "Desenhar juntos",
+  "tomar energeticos juntos",
+  "explorar a cidade"
 ];
 
 let anguloAtual = 0;
